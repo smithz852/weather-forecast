@@ -1,0 +1,41 @@
+h1 {
+    padding: 1%;
+}
+
+li {
+    margin-top: 5%;
+}
+
+.form-width {
+    width: 80% !important;
+}
+
+.search-container {
+    padding: 2%;
+}
+
+.search-button {
+    margin-left: 2%;
+    margin-bottom: 5%;
+}
+
+.display-flex {
+    flex-basis: 60%;
+    flex-direction: column;
+}
+
+.search-flex {
+    flex-basis: 30%;
+    flex-direction: column;
+}
+
+.forecast-area {
+    height: 225px;
+    border: 3px solid black;
+    margin-top: 3%;
+    margin-right: 5%;
+}
+
+.flex {
+   display: flex;
+}
