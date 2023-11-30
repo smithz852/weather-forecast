@@ -4,31 +4,32 @@ var searchButton = document.querySelector('.btn')
 var APIkey = '35a942fcbd737dc05d350e60c8138a71'
 var latitude = '-33.865143'
 var longitude = '151.209900'
-// var weatherURL = 'https://api.openweathermap.org/data/2.5/forecast?lat= + latitude + &lon= + longitude + &appid= + APIkey'
-var weatherURL = 'https://api.github.com/gists/public?since=2021-06-01&per_page=1'
+var weatherURL = 'https://api.openweathermap.org/data/2.5/forecast?lat=' + latitude + '&lon=' + longitude + '&appid=' + APIkey;
+// var weatherURL = 'https://api.github.com/gists/public?since=2021-06-01&per_page=1'
 
 var locationArray = [''];
 
 function getWeather() {
     fetch(weatherURL).then(function(response) {
+        
         return response.json();
     }).then(function(data) {
         console.log(data);
-// change info once weather api is working
-    for (var i = 0; i < data.length; i++) {
-        var city = document.createElement('h3')
-        var temp = document.createElement('p')
-        var wind = document.createElement('p')
+
+    for (var i = 0; i < 1; i++) {
+        var place = document.createElement('h3')
+        var air = document.createElement('p')
+        var windSpeed = document.createElement('p')
         var humidity = document.createElement('p')
 
-        city.textContent = data[i].id
-        temp.textContent = data[i].description
-        wind.textContent = data[i].node_id
-        humidity.textContent = data[i].created_at
+        place.textContent = data.city.name
+        air.textContent = data.list[i].main.temp
+        windSpeed.textContent = data.list[i].wind.speed
+        humidity.textContent = data.list[i].main.humidity
 
-        cityContainer.append(city);
-        cityContainer.append(temp);
-        cityContainer.append(wind);
+        cityContainer.append(place);
+        cityContainer.append(air);
+        cityContainer.append(windSpeed);
         cityContainer.append(humidity);
 
 
