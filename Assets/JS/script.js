@@ -2,9 +2,13 @@ var locationInput = document.querySelector('.form-control')
 var cityContainer = document.querySelector('#cityDetail')
 var searchButton = document.querySelector('.btn')
 var APIkey = '35a942fcbd737dc05d350e60c8138a71'
-var latitude = '-33.865143'
-var longitude = '151.209900'
-var weatherURL = 'https://api.openweathermap.org/data/2.5/forecast?lat=' + latitude + '&lon=' + longitude + '&appid=' + APIkey;
+var forecastBox = document.querySelector('.forecastBox')
+var boxHeader = document.querySelector('.boxHeader')
+var box =document.querySelector('.box')
+// var latitude = '-33.865143'
+// var longitude = '151.209900'
+var cityName = 'Sydney'
+var weatherURL = 'https://api.openweathermap.org/data/2.5/forecast?q=' + cityName + '&appid=' + APIkey;
 // var weatherURL = 'https://api.github.com/gists/public?since=2021-06-01&per_page=1'
 
 var locationArray = [''];
@@ -31,9 +35,23 @@ function getWeather() {
         cityContainer.append(air);
         cityContainer.append(windSpeed);
         cityContainer.append(humidity);
-
-
     }
+    var weatherContainer = ''
+   for (var i = 1; i < 6 ; i++) {
+        
+        weatherContainer += `<span class = 'boxStyle'>
+        <h6>${data.city.name}</h6>
+        <p>${data.list[i].main.temp}</p>
+        <p>${data.list[i].wind.speed}</p>
+        <p>${data.list[i].main.humidity}</p>
+        </span>`
+        
+
+
+   }
+   box.innerHTML = weatherContainer;
+
+
 
     })
 }
