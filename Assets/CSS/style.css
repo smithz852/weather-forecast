@@ -36,13 +36,25 @@ li {
     margin-right: 5%;
 }
 
+.day-area {
+    height: 225px;
+    margin-top: 3%;
+    margin-right: 5%;
+}
+
 .flex {
    display: flex;
 }
 
+.flex5day {
+    display: flex;
+    justify-content: space-between;
+ }
+
 .boxStyle {
-    width: 150px;
-    height: 150px;
+    flex-basis: 19%;
+    width: 125px;
+    height: 165px;
     border: 3px solid black;
     background-color: aquamarine;
 }

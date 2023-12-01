@@ -37,10 +37,10 @@ function getWeather() {
         cityContainer.append(humidity);
     }
     var weatherContainer = ''
-   for (var i = 1; i < 6 ; i++) {
-        
+   for (var i = 3; i < 39 ; i = i + 8) {
+        //3, 11, 19, 27, 35
         weatherContainer += `<span class = 'boxStyle'>
-        <h6>${data.city.name}</h6>
+        <h6>${data.city.name} ${data.list[i].dt_txt}</h6>
         <p>${data.list[i].main.temp}</p>
         <p>${data.list[i].wind.speed}</p>
         <p>${data.list[i].main.humidity}</p>
