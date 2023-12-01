@@ -40,13 +40,14 @@ function getWeather() {
    for (var i = 3; i < 39 ; i = i + 8) {
         //3, 11, 19, 27, 35
         weatherContainer += `<span class = 'boxStyle'>
-        <h6>${data.city.name} ${data.list[i].dt_txt}</h6>
+        <h6>${dayjs(data.list[i].dt_txt).format('MM/DD/YYYY')}</h6>
+        <img class = 'iconSmall' src ='https://openweathermap.org/img/wn/${data.list[i].weather[0].icon}@2x.png'>
         <p>${data.list[i].main.temp}</p>
         <p>${data.list[i].wind.speed}</p>
         <p>${data.list[i].main.humidity}</p>
         </span>`
         
-
+// add link for weather icons to first p tag above
 
    }
    box.innerHTML = weatherContainer;
