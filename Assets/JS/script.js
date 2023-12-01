@@ -41,7 +41,7 @@ function getWeather() {
         //3, 11, 19, 27, 35
         weatherContainer += `<span class = 'boxStyle'>
         <h6>${dayjs(data.list[i].dt_txt).format('MM/DD/YYYY')}</h6>
-        <p>${data.list[i].weather[0].icon}</p> 
+        <img class = 'iconSmall' src ='https://openweathermap.org/img/wn/${data.list[i].weather[0].icon}@2x.png'>
         <p>${data.list[i].main.temp}</p>
         <p>${data.list[i].wind.speed}</p>
         <p>${data.list[i].main.humidity}</p>
