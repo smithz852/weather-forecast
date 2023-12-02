@@ -10,6 +10,7 @@ var cityName = ''
 console.log(cityName)
 var weatherURL = ''
 var cityGroup = document.querySelector('.list-group')
+var error = document.querySelector('.error')
 // var weatherURL = 'https://api.github.com/gists/public?since=2021-06-01&per_page=1'
 
 // for storing location searches
@@ -17,11 +18,6 @@ var locationArray = [];
 
 // Initiates api call from search
 function getWeather() {
-    cityName = localStorage.getItem('location')
-    locationArray.push(cityName);
-    console.log(locationArray);
-    cityList();
-    weatherURL = 'https://api.openweathermap.org/data/2.5/forecast?q=' + cityName + '&units=imperial&appid=' + APIkey;
     fetchAPI();
 }
 
@@ -38,10 +34,26 @@ function cityList() {
 
 // The fetch request and data added to webpage upon reading return call
 function fetchAPI() {
+
+    cityName = localStorage.getItem('location')
+    locationArray.push(cityName);
+    console.log(locationArray);
+    weatherURL = 'https://api.openweathermap.org/data/2.5/forecast?q=' + cityName + '&units=imperial&appid=' + APIkey;
+
     fetch(weatherURL).then(function(response) {
         return response.json();
     }).then(function(data) {
+        console.log(data.cod);
         console.log(data);
+
+        if (data.cod === '404') {
+            locationArray.pop();
+            error.classList.remove('hide')
+            return;
+        } else {
+            error.classList.add('hide')
+            cityList();
+        }
 
         var weatherImg =''
         var weatherInfo = ''

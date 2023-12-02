@@ -16,6 +16,7 @@
                 <form>
                     <div class="mb-3 search-container">
                         <label for="exampleInputEmail1" class="form-label">Enter Location:</label>
+                        <p class="hide error" style="color: red;">Error: Please Enter A Valid City</p>
                         <input
                             type="text"
                             class="form-control form-width"
@@ -26,24 +27,18 @@
                     </div>
                     <button type="submit" class="btn btn-primary search-button">Search</button>
                 </form>
-                <ul class="list-group search-button form-width">
-                    
-                </ul>
+                <ul class="list-group search-button form-width"></ul>
             </div>
             <div class="display-flex">
-                <div class=" forecast-area" >
+                <div class=" forecast-area">
                     <div class="flex">
-                    <section id="cityDetail"></section>
-                    <section id = 'cityIcon'></section>
-                  </div>
+                        <section id="cityDetail"></section>
+                        <section id="cityIcon"></section>
+                    </div>
                 </div>
                 <div class="day-area">
                     <h5>5 Day Forecast:</h5>
-                    <div class="flex5day box">
-                        <!-- <span>
-            <h6 class="boxHeader"></h6>
-            <ul class="forecastBox"></ul>
-        </span> --></div>
+                    <div class="flex5day box"></div>
                 </div>
             </div>
         </div>
