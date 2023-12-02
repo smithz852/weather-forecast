@@ -12,30 +12,33 @@ var weatherURL = ''
 var cityGroup = document.querySelector('.list-group')
 // var weatherURL = 'https://api.github.com/gists/public?since=2021-06-01&per_page=1'
 
+// for storing location searches
 var locationArray = [];
 
+// Initiates api call from search
 function getWeather() {
     cityName = localStorage.getItem('location')
     locationArray.push(cityName);
     console.log(locationArray);
-    cityList(); //creating function
+    cityList();
     weatherURL = 'https://api.openweathermap.org/data/2.5/forecast?q=' + cityName + '&units=imperial&appid=' + APIkey;
     fetchAPI();
 }
 
-
+// Adds buttons to webpage for users search history
 function cityList() {
  var cityContainer = ''
+
  for (var i = 0; i < locationArray.length; i++) {
    cityContainer += `<button class = 'list-group-item'>${locationArray[i]}</button>`
  }
+
  cityGroup.innerHTML = cityContainer
 }
 
-
+// The fetch request and data added to webpage upon reading return call
 function fetchAPI() {
     fetch(weatherURL).then(function(response) {
-        
         return response.json();
     }).then(function(data) {
         console.log(data);
@@ -45,26 +48,20 @@ function fetchAPI() {
 
     for (var i = 0; i < 1; i++) {
 
-
-
+        weatherImg = `<img class = 'iconBig' src = 'https://openweathermap.org/img/wn/${data.list[i].weather[0].icon}@2x.png'>`
 
         weatherInfo += `<span>
-        <h3> ${data.city.name} (${dayjs(data.list[i].dt_txt).format('MM/DD/YYYY')})</h3>
+        <h3> ${data.city.name} (${dayjs(data.list[i].dt_txt).format('MM/DD/YYYY')}) ${weatherImg}</h3>
         <p>Temp: ${data.list[i].main.temp}°F</p>
         <p>Wind: ${data.list[i].wind.speed} MPH</p>
         <p>Humidity: ${data.list[i].main.humidity}%</p>
         </span>`
 
-
-
-        weatherImg.textContent = 'https://openweathermap.org/img/wn/' + data.list[i].weather[0].icon + '@2x.png'
-
-
-     
-        weatherImg += `<img class = 'iconBig' src = 'https://openweathermap.org/img/wn/${data.list[i].weather[0].icon}@2x.png'>`
+        // weatherImg.textContent = 'https://openweathermap.org/img/wn/' + data.list[i].weather[0].icon + '@2x.png'
+        
     }
 
-    cityIcon.innerHTML = weatherImg
+    // cityIcon.innerHTML = weatherImg
     cityContainer.innerHTML = weatherInfo
 
     var weatherContainer = ''
@@ -77,14 +74,9 @@ function fetchAPI() {
         <p>Wind: ${data.list[i].wind.speed} MPH</p>
         <p>Humidity: ${data.list[i].main.humidity}%</p>
         </span>`
-        
-
    }
 
    box.innerHTML = weatherContainer;
-
-
-
     })
 }
 
@@ -95,7 +87,7 @@ function fetchAPI() {
 
 
 
-
+// Event listeners for search and history buttons
 
 searchButton.addEventListener('click', function(event) {
     event.preventDefault();
