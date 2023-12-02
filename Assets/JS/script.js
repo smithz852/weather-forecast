@@ -9,6 +9,7 @@ var cityIcon = document.querySelector('#cityIcon')
 var cityName = ''
 console.log(cityName)
 var weatherURL = ''
+var cityGroup = document.querySelector('.list-group')
 // var weatherURL = 'https://api.github.com/gists/public?since=2021-06-01&per_page=1'
 
 var locationArray = [];
@@ -17,7 +18,22 @@ function getWeather() {
     cityName = localStorage.getItem('location')
     locationArray.push(cityName);
     console.log(locationArray);
+    cityList(); //creating function
     weatherURL = 'https://api.openweathermap.org/data/2.5/forecast?q=' + cityName + '&units=imperial&appid=' + APIkey;
+    fetchAPI();
+}
+
+
+function cityList() {
+ var cityContainer = ''
+ for (var i = 0; i < locationArray.length; i++) {
+   cityContainer += `<button class = 'list-group-item'>${locationArray[i]}</button>`
+ }
+ cityGroup.innerHTML = cityContainer
+}
+
+
+function fetchAPI() {
     fetch(weatherURL).then(function(response) {
         
         return response.json();
@@ -81,12 +97,6 @@ function getWeather() {
 
 
 
-
-
-
-
-
-
 searchButton.addEventListener('click', function(event) {
     event.preventDefault();
     var location = locationInput.value
@@ -94,4 +104,12 @@ searchButton.addEventListener('click', function(event) {
     // create an array to store location values
     //pull from local storage array to create list
     getWeather();
+})
+
+cityGroup.addEventListener('click', function(event) {
+    event.preventDefault();
+    var cityChoice = event.target.textContent
+    console.log(cityChoice);
+    weatherURL = 'https://api.openweathermap.org/data/2.5/forecast?q=' + cityChoice + '&units=imperial&appid=' + APIkey;
+    fetchAPI();
 })
