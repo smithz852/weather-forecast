@@ -6,7 +6,7 @@ N/A
 
 ## Usage
 
-Deployed Page: 
+Deployed Page: https://smithz852.github.io/weather-forecast/
 
 GitHub Repo: https://github.com/smithz852/weather-forecast.git
 
