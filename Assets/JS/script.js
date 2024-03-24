@@ -36,7 +36,7 @@ function cityList() {
 function fetchAPI() {
 
     cityName = localStorage.getItem('location')
-    locationArray.push(cityName);
+    // locationArray.push(cityName);
     console.log(locationArray);
     weatherURL = 'https://api.openweathermap.org/data/2.5/forecast?q=' + cityName + '&units=imperial&appid=' + APIkey;
 
@@ -105,8 +105,7 @@ searchButton.addEventListener('click', function(event) {
     event.preventDefault();
     var location = locationInput.value
     localStorage.setItem('location', location)
-    // create an array to store location values
-    //pull from local storage array to create list
+    locationArray.push(location);
     getWeather();
 })
 
@@ -114,6 +113,7 @@ cityGroup.addEventListener('click', function(event) {
     event.preventDefault();
     var cityChoice = event.target.textContent
     console.log(cityChoice);
+    localStorage.setItem('location', cityChoice)
     weatherURL = 'https://api.openweathermap.org/data/2.5/forecast?q=' + cityChoice + '&units=imperial&appid=' + APIkey;
     fetchAPI();
 })
