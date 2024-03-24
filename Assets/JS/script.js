@@ -21,6 +21,8 @@ function getWeather() {
     fetchAPI();
 }
 
+fetchAPI();
+
 // Adds buttons to webpage for users search history
 function cityList() {
  var cityContainer = ''
