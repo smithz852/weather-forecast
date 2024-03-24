@@ -18,10 +18,14 @@ var locationArray = [];
 
 // Initiates api call from search
 function getWeather() {
+    var cityData = localStorage.getItem('location')
+    if (!cityData) {
+        return;
+    }
     fetchAPI();
 }
 
-fetchAPI();
+getWeather();
 
 // Adds buttons to webpage for users search history
 function cityList() {
